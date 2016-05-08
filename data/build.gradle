@@ -54,7 +54,8 @@ dependencies {
     apt dataDependencies.daggerCompiler
     provided dataDependencies.javaxAnnotation
     compile dataDependencies.dagger
-    compile dataDependencies.okHttp
+//    compile dataDependencies.okHttp
+    compile dataDependencies.retrofit
     compile dataDependencies.gson
     compile dataDependencies.rxJava
     compile dataDependencies.rxAndroid

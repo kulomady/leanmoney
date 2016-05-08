@@ -78,10 +78,6 @@ dependencies {
     compile project(':domain')
     compile project(':data')
 
-    //glide
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-//    compile 'com.android.support:support-v4:23.3.0'
-
     apt presentationDependencies.daggerCompiler
     apt presentationDependencies.butterKnifeCompiler
 
@@ -93,6 +89,7 @@ dependencies {
     compile presentationDependencies.recyclerView
     compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
+    compile presentationDependencies.glide
     provided presentationDependencies.javaxAnnotation
 
     androidTestCompile presentationTestDependencies.mockito

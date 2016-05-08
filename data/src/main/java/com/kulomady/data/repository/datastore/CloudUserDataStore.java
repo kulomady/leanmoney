@@ -2,7 +2,7 @@ package com.kulomady.data.repository.datastore;
 
 import com.kulomady.data.cache.UserCache;
 import com.kulomady.data.entity.UserEntity;
-import com.kulomady.data.net.RestApi;
+import com.kulomady.data.net.UserRestApi;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import rx.functions.Action1;
  * Created by kulomady on 5/6/16.
  */
 public class CloudUserDataStore implements UserDataStore{
-    private final RestApi restApi;
+    private final UserRestApi restApi;
     private final UserCache userCache;
 
     private final Action1<UserEntity> saveToCacheAction = userEntity ->{
@@ -23,7 +23,7 @@ public class CloudUserDataStore implements UserDataStore{
         }
     };
 
-    public CloudUserDataStore(RestApi restApi, UserCache userCache) {
+    public CloudUserDataStore(UserRestApi restApi, UserCache userCache) {
         this.restApi = restApi;
         this.userCache = userCache;
     }

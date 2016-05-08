@@ -18,10 +18,11 @@ package com.kulomady.data.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
 import com.fernandocejas.frodo.annotation.RxLogObservable;
-import com.kulomady.data.exception.NetworkConnectionException;
 import com.kulomady.data.entity.UserEntity;
 import com.kulomady.data.entity.mapper.UserEntityJsonMapper;
+import com.kulomady.data.exception.NetworkConnectionException;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -29,80 +30,42 @@ import java.util.List;
 import rx.Observable;
 
 /**
- * {@link RestApi} implementation for retrieving data from the network.
+ * {@link UserRestApi} implementation for retrieving data from the network.
  */
-public class RestApiImpl implements RestApi {
+public class UserRestApiImpl implements UserRestApi {
 
   private final Context context;
   private final UserEntityJsonMapper userEntityJsonMapper;
+  private final UserService userService;
 
   /**
    * Constructor of the class
    *
-   * @param context {@link android.content.Context}.
+   * @param context {@link Context}.
    * @param userEntityJsonMapper {@link UserEntityJsonMapper}.
    */
-  public RestApiImpl(Context context, UserEntityJsonMapper userEntityJsonMapper) {
+  public UserRestApiImpl(Context context, UserEntityJsonMapper userEntityJsonMapper) {
     if (context == null || userEntityJsonMapper == null) {
       throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
     }
     this.context = context.getApplicationContext();
     this.userEntityJsonMapper = userEntityJsonMapper;
+    this.userService = new UserService();
   }
 
   @RxLogObservable
   @Override
   public Observable<List<UserEntity>> userEntityList() {
-    return Observable.create(subscriber -> {
-      if (isThereInternetConnection()) {
-        try {
-          String responseUserEntities = getUserEntitiesFromApi();
-          if (responseUserEntities != null) {
-            subscriber.onNext(userEntityJsonMapper.transformUserEntityCollection(
-                responseUserEntities));
-            subscriber.onCompleted();
-          } else {
-            subscriber.onError(new NetworkConnectionException());
-          }
-        } catch (Exception e) {
-          subscriber.onError(new NetworkConnectionException(e.getCause()));
-        }
-      } else {
-        subscriber.onError(new NetworkConnectionException());
-      }
-    });
+    return  userService.getApi().userEntityList();
   }
 
   @RxLogObservable
   @Override
   public Observable<UserEntity> userEntityById(final int userId) {
-    return Observable.create(subscriber -> {
-      if (isThereInternetConnection()) {
-        try {
-          String responseUserDetails = getUserDetailsFromApi(userId);
-          if (responseUserDetails != null) {
-            subscriber.onNext(userEntityJsonMapper.transformUserEntity(responseUserDetails));
-            subscriber.onCompleted();
-          } else {
-            subscriber.onError(new NetworkConnectionException());
-          }
-        } catch (Exception e) {
-          subscriber.onError(new NetworkConnectionException(e.getCause()));
-        }
-      } else {
-        subscriber.onError(new NetworkConnectionException());
-      }
-    });
+      String userIdParams = "user_"+userId+".json";
+      return userService.getApi().userEntityById(userIdParams);
   }
 
-  private String getUserEntitiesFromApi() throws MalformedURLException {
-    return ApiConnection.createGET(RestApi.API_URL_GET_USER_LIST).requestSyncCall();
-  }
-
-  private String getUserDetailsFromApi(int userId) throws MalformedURLException {
-    String apiUrl = RestApi.API_URL_GET_USER_DETAILS + userId + ".json";
-    return ApiConnection.createGET(apiUrl).requestSyncCall();
-  }
 
   /**
    * Checks if the device has any active internet connection.

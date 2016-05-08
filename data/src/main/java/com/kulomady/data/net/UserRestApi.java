@@ -24,9 +24,9 @@ import java.util.List;
 import rx.Observable;
 
 /**
- * RestApi for retrieving data from the network.
+ * UserRestApi for retrieving user data from the network.
  */
-public interface RestApi {
+public interface UserRestApi {
   String API_BASE_URL = "http://www.android10.org/myapi/";
 
   /** Api url for getting all users */

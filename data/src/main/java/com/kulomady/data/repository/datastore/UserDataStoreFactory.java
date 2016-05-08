@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.kulomady.data.cache.UserCache;
 
-import com.kulomady.data.net.RestApi;
-import com.kulomady.data.net.RestApiImpl;
+import com.kulomady.data.net.UserRestApi;
 import com.kulomady.data.entity.mapper.UserEntityJsonMapper;
+import com.kulomady.data.net.UserRestApiImpl;
 
 import javax.inject.Inject;
 
@@ -48,7 +48,7 @@ public class UserDataStoreFactory {
     public UserDataStore createCloudDataStore() {
         UserEntityJsonMapper userEntityJsonMapper = new UserEntityJsonMapper();
 
-        RestApi restApi = new RestApiImpl(this.context, userEntityJsonMapper);
+        UserRestApi restApi = new UserRestApiImpl(this.context, userEntityJsonMapper);
 
         return new CloudUserDataStore(restApi, this.userCache);
     }
