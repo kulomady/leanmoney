@@ -7,18 +7,24 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
 import com.kulomady.mycleanarchitecture.R;
 import com.kulomady.mycleanarchitecture.internal.di.HasComponent;
+
 import com.kulomady.mycleanarchitecture.internal.di.components.DaggerUserComponent;
 import com.kulomady.mycleanarchitecture.internal.di.components.UserComponent;
 import com.kulomady.mycleanarchitecture.internal.di.modules.UserModule;
+import com.kulomady.mycleanarchitecture.presenter.UserDetailsPresenter;
 import com.kulomady.mycleanarchitecture.view.fragment.UserDetailsFragment;
+import com.squareup.picasso.Picasso;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,8 +38,12 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
         callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_ID, userId);
         return callingIntent;
     }
+
+    @Inject
+    UserDetailsPresenter userDetailsPresenter;
     @BindView(R.id.iv_cover)
     ImageView iv_cover;
+
     private int userId;
     private UserComponent userComponent;
 
@@ -44,8 +54,6 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
         setContentView(R.layout.activity_user_detail);
         this.initializeActivity(savedInstanceState);
         this.initializeInjector();
-        ButterKnife.bind(this);
-        setupToolbar();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -77,27 +85,49 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
                 .build();
     }
 
+
+
     @Override public UserComponent getComponent() {
         return userComponent;
     }
 
-    private void setupToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if(getSupportActionBar()!=null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    @Override
+    protected void setupToolbar() {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+            if(getSupportActionBar()!=null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void loadImageFromUrl(String url) {
-        Glide.with(this)
+        Picasso.with(this)
                     .load(url)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .override(500,350)
+                    .resize(500, 350)
+                    .centerCrop()
                     .into(iv_cover);
     }
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        super.onBackPressed();
+
     }
 }
 

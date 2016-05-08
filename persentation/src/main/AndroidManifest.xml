@@ -23,7 +23,7 @@
             android:name=".view.activity.ListUserActivity"
             android:label="@string/title_activity_list_user"
             android:parentActivityName=".view.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.activity.MainActivity" />
@@ -32,8 +32,7 @@
             android:name=".view.activity.UserDetailActivity"
             android:label="@string/title_activity_user_detail"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".view.activity.ListUserActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:parentActivityName=".view.activity.ListUserActivity" />
     </application>
 
 </manifest>

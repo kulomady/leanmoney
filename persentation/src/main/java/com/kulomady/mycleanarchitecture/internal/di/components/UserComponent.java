@@ -1,8 +1,11 @@
 package com.kulomady.mycleanarchitecture.internal.di.components;
 
+import android.app.Activity;
+
 import com.kulomady.mycleanarchitecture.internal.di.PerActivity;
 import com.kulomady.mycleanarchitecture.internal.di.modules.ActivityModule;
 import com.kulomady.mycleanarchitecture.internal.di.modules.UserModule;
+import com.kulomady.mycleanarchitecture.view.activity.UserDetailActivity;
 import com.kulomady.mycleanarchitecture.view.fragment.ListUserFragment;
 import com.kulomady.mycleanarchitecture.view.fragment.UserDetailsFragment;
 
@@ -18,5 +21,6 @@ import dagger.Component;
 public interface UserComponent extends ActivityComponent {
     void inject(ListUserFragment userListFragment);
     void inject(UserDetailsFragment userDetailsFragment);
+
 
 }

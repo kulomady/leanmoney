@@ -16,6 +16,7 @@
 package com.kulomady.mycleanarchitecture.presenter;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 
 import com.fernandocejas.frodo.annotation.RxLogSubscriber;
@@ -39,7 +40,7 @@ import javax.inject.Named;
  */
 @PerActivity
 public class UserDetailsPresenter implements Presenter {
-
+  private static final String TAG = "UserDetailsPresenter";
   private UserDetailsView viewDetailsView;
 
   private final UseCase getUserDetailsUseCase;
@@ -72,6 +73,7 @@ public class UserDetailsPresenter implements Presenter {
    * Initializes the presenter by start retrieving user details.
    */
   public void initialize() {
+    Log.d(TAG, "initialize called ");
     this.loadUserDetails();
   }
 

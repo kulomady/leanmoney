@@ -6,6 +6,7 @@ import android.media.Image;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.kulomady.mycleanarchitecture.R;
 import com.kulomady.mycleanarchitecture.internal.di.components.UserComponent;
 import com.kulomady.mycleanarchitecture.model.UserModel;
@@ -137,14 +138,6 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     @Override
     public void renderUser(UserModel user) {
         if (user != null) {
-//            Glide.with(this).load(user.getCoverUrl()).into(this.iv_cover);
-//            Glide.with(getActivity())
-//                    .load(user.getCoverUrl())
-//                    .crossFade()
-//                    .override(500,350)
-//                    .into(iv_cover);
-//            iv_cover.setImageUrl(user.getCoverUrl());
-//            getActivity().loadImageUrl(user.getCoverUrl());
             collapsingToolbarLayout.setTitle(user.getFullName());
             callback.loadImageFromUrl(user.getCoverUrl());
             this.tv_fullname.setText(user.getFullName());

@@ -16,8 +16,10 @@ import com.kulomady.mycleanarchitecture.internal.di.components.UserComponent;
 import com.kulomady.mycleanarchitecture.model.UserModel;
 import com.kulomady.mycleanarchitecture.presenter.UserListPresenter;
 import com.kulomady.mycleanarchitecture.view.UserListView;
+import com.kulomady.mycleanarchitecture.view.adapter.FeedItemAnimator;
 import com.kulomady.mycleanarchitecture.view.adapter.UsersAdapter;
 import com.kulomady.mycleanarchitecture.view.adapter.UsersLayoutManager;
+import com.kulomady.mycleanarchitecture.view.component.FeedContextMenuManager;
 
 import java.util.Collection;
 
@@ -157,6 +159,13 @@ public class ListUserFragment extends  BaseFragment implements UserListView {
         this.usersAdapter.setOnItemClickListener(onItemClickListener);
         this.rv_users.setLayoutManager(new UsersLayoutManager(context()));
         this.rv_users.setAdapter(usersAdapter);
+        this.rv_users.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                FeedContextMenuManager.getInstance().onScrolled(recyclerView, dx, dy);
+            }
+        });
+        this.rv_users.setItemAnimator(new FeedItemAnimator());
     }
 
     /**
