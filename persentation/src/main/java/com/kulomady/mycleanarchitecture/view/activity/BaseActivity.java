@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.kulomady.mycleanarchitecture.Navigation.Navigator;
 import com.kulomady.mycleanarchitecture.R;
 import com.kulomady.mycleanarchitecture.internal.di.components.ApplicationComponent;
 import com.kulomady.mycleanarchitecture.internal.di.modules.ActivityModule;
+import com.kulomady.mycleanarchitecture.model.TestModelDagger2;
 
 import javax.inject.Inject;
 
@@ -33,6 +35,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Inject
     Navigator navigator;
 
+
+
+
     @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -47,6 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getApplicationComponent().inject(this);
+
     }
 
     @Override

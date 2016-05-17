@@ -10,6 +10,7 @@ import com.kulomady.domain.executor.PostExecutionThread;
 import com.kulomady.domain.executor.ThreadExecutor;
 import com.kulomady.domain.repository.UserRepository;
 import com.kulomady.mycleanarchitecture.AndroidApplication;
+import com.kulomady.mycleanarchitecture.Navigation.Navigator;
 import com.kulomady.mycleanarchitecture.UIThread;
 
 import javax.inject.Singleton;
@@ -35,6 +36,7 @@ public class ApplicationModule {
     Context provideApplicationContext() {
         return this.application;
     }
+
 
     @Provides @Singleton
     ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor){

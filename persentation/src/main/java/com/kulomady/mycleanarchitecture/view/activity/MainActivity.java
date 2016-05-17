@@ -11,16 +11,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
+import com.google.gson.Gson;
 import com.kulomady.mycleanarchitecture.R;
+import com.kulomady.mycleanarchitecture.internal.di.components.DaggerSigninComponent;
+import com.kulomady.mycleanarchitecture.internal.di.components.SigninComponent;
+import com.kulomady.mycleanarchitecture.internal.di.modules.SigninModule;
+import com.kulomady.mycleanarchitecture.model.TestModelDagger2;
 import com.kulomady.mycleanarchitecture.view.adapter.FeedAdapter;
 import com.kulomady.mycleanarchitecture.view.adapter.FeedItemAnimator;
 import com.kulomady.mycleanarchitecture.view.component.FeedContextMenu;
 import com.kulomady.mycleanarchitecture.view.component.FeedContextMenuManager;
 import com.kulomady.mycleanarchitecture.view.utils.ViewUtils;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +48,8 @@ public class MainActivity extends BaseDrawerActivity implements FeedAdapter.OnFe
     FloatingActionButton fabCreate;
     @BindView(R.id.content)
     CoordinatorLayout clContent;
+    @Inject
+    TestModelDagger2 testModelDagger2;
 
     private FeedAdapter feedAdapter;
 
@@ -50,7 +60,12 @@ public class MainActivity extends BaseDrawerActivity implements FeedAdapter.OnFe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupFeed();
-
+        SigninComponent signinComponent = DaggerSigninComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .signinModule(new SigninModule("test","password"))
+                .build();
+        signinComponent.inject(this);
+        Log.d("BaseActivity", "onCreate: " + new Gson().toJson(testModelDagger2));
         if (savedInstanceState == null) {
             pendingIntroAnimation = true;
         } else {

@@ -1,8 +1,8 @@
 package com.kulomady.data.repository;
 
 import com.kulomady.data.entity.mapper.UserEntityDataMapper;
-import com.kulomady.data.repository.datastore.UserDataStore;
-import com.kulomady.data.repository.datastore.UserDataStoreFactory;
+import com.kulomady.data.repository.datastore.userStore.UserDataStore;
+import com.kulomady.data.repository.datastore.userStore.UserDataStoreFactory;
 import com.kulomady.domain.User;
 import com.kulomady.domain.repository.UserRepository;
 

@@ -10,6 +10,7 @@ import android.content.Context;
 import com.kulomady.domain.executor.PostExecutionThread;
 import com.kulomady.domain.executor.ThreadExecutor;
 import com.kulomady.domain.repository.UserRepository;
+import com.kulomady.mycleanarchitecture.Navigation.Navigator;
 import com.kulomady.mycleanarchitecture.internal.di.modules.ApplicationModule;
 import com.kulomady.mycleanarchitecture.view.activity.BaseActivity;
 
@@ -24,6 +25,7 @@ public interface ApplicationComponent {
     void inject(BaseActivity baseActivity);
 
     //Exposed to sub-graphs.
+    Navigator navigator();
     Context context();
     ThreadExecutor threadExecutor();
     PostExecutionThread postExecutionThread();

@@ -1,4 +1,4 @@
-package com.kulomady.data.repository.datastore;
+package com.kulomady.data.repository.datastore.userStore;
 
 import android.content.Context;
 

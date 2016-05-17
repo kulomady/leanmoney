@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import com.kulomady.mycleanarchitecture.internal.di.PerActivity;
 import com.kulomady.mycleanarchitecture.internal.di.modules.ActivityModule;
+import com.kulomady.mycleanarchitecture.internal.di.modules.SigninModule;
+import com.kulomady.mycleanarchitecture.view.activity.MainActivity;
 
 import dagger.Component;
 
@@ -17,7 +19,7 @@ import dagger.Component;
  * Created by kulomady on 5/6/16.
  */
 @PerActivity
-@Component(dependencies = ApplicationComponent.class,modules = ActivityModule.class)
+@Component(dependencies = ApplicationComponent.class,modules = {ActivityModule.class, SigninModule.class})
 public interface ActivityComponent {
     //Exposed to sub-graphs.
     Activity activity();

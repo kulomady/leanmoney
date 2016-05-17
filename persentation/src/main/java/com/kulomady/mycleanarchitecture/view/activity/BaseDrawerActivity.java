@@ -1,7 +1,6 @@
 package com.kulomady.mycleanarchitecture.view.activity;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -37,9 +36,6 @@ public class BaseDrawerActivity extends BaseActivity implements NavigationView.O
     @BindString(R.string.user_profile_photo)
     String profilePhoto;
 
-    //Cannot be bound via Butterknife, hosting view is initialized later (see setupHeader() method)
-    private ImageView ivMenuUserProfilePhoto;
-
     @Override
     public void setContentView(int layoutResID) {
         super.setContentViewWithoutInject(R.layout.activity_drawer);
@@ -65,7 +61,7 @@ public class BaseDrawerActivity extends BaseActivity implements NavigationView.O
 
     private void setupHeader() {
         View headerView = vNavigation.getHeaderView(0);
-        ivMenuUserProfilePhoto = (ImageView) headerView.findViewById(R.id.ivMenuUserProfilePhoto);
+        ImageView ivMenuUserProfilePhoto = (ImageView) headerView.findViewById(R.id.ivMenuUserProfilePhoto);
         headerView.findViewById(R.id.vGlobalMenuHeader).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +78,8 @@ public class BaseDrawerActivity extends BaseActivity implements NavigationView.O
                 .into(ivMenuUserProfilePhoto);
     }
 
-    public void onGlobalMenuHeaderClick(final View v) {
+    @SuppressLint("RtlHardcoded")
+    private void onGlobalMenuHeaderClick(final View v) {
         drawerLayout.closeDrawer(Gravity.LEFT);
         new Handler().postDelayed(new Runnable() {
             @Override

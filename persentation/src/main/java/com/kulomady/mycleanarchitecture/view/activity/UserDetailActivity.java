@@ -5,21 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.google.gson.Gson;
 import com.kulomady.mycleanarchitecture.R;
 import com.kulomady.mycleanarchitecture.internal.di.HasComponent;
 
 import com.kulomady.mycleanarchitecture.internal.di.components.DaggerUserComponent;
 import com.kulomady.mycleanarchitecture.internal.di.components.UserComponent;
 import com.kulomady.mycleanarchitecture.internal.di.modules.UserModule;
+import com.kulomady.mycleanarchitecture.model.TestModelDagger2;
 import com.kulomady.mycleanarchitecture.presenter.UserDetailsPresenter;
 import com.kulomady.mycleanarchitecture.view.fragment.UserDetailsFragment;
 import com.squareup.picasso.Picasso;
@@ -27,9 +25,12 @@ import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class UserDetailActivity extends BaseActivity implements HasComponent<UserComponent>,UserDetailsFragment.UserDetailCallback {
+public class UserDetailActivity extends BaseActivity implements
+        HasComponent<UserComponent>,
+        UserDetailsFragment.UserDetailCallback {
+
+    private static final String TAG = "UserDetailActivity";
     private static final String INTENT_EXTRA_PARAM_USER_ID = "com.kulomady.INTENT_PARAM_USER_ID";
     private static final String INSTANCE_STATE_PARAM_USER_ID = "com.kulomady.STATE_PARAM_USER_ID";
 
@@ -39,6 +40,8 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
         return callingIntent;
     }
 
+    @Inject
+    TestModelDagger2 testModelDagger2;
     @Inject
     UserDetailsPresenter userDetailsPresenter;
     @BindView(R.id.iv_cover)
@@ -54,7 +57,7 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
         setContentView(R.layout.activity_user_detail);
         this.initializeActivity(savedInstanceState);
         this.initializeInjector();
-
+        Log.d(TAG, "onCreate: " + testModelDagger2);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,7 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
                 .activityModule(getActivityModule())
                 .userModule(new UserModule(this.userId))
                 .build();
+
     }
 
 
@@ -126,7 +130,7 @@ public class UserDetailActivity extends BaseActivity implements HasComponent<Use
     @Override
     public void onBackPressed() {
         this.finish();
-        super.onBackPressed();
+
 
     }
 }

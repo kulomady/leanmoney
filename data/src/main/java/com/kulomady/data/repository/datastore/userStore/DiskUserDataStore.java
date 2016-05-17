@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kulomady.data.repository.datastore;
+package com.kulomady.data.repository.datastore.userStore;
 
 import com.kulomady.data.cache.UserCache;
 import com.kulomady.data.entity.UserEntity;
