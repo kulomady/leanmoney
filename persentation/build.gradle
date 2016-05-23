@@ -98,8 +98,9 @@ dependencies {
     androidTestCompile presentationTestDependencies.dexmakerMockito
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.testingSupportLib
-    androidTestCompile presentationTestDependencies.junit
+
 
     //Development
     compile developmentDependencies.leakCanary
+
 }

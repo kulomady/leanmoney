@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout
+            android:id="@+id/vImageRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/iv_product_image"
+                android:contentDescription="@string/product_image_desc"
+                android:scaleType="centerCrop" />
+
+            <ProgressBar
+                android:id="@+id/pbImageProduct"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal" />
+
+        </com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout>
+
+        <LinearLayout
+            android:id="@+id/grosir_preorder_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_vs"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_grosir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedge_wholesale"
+                android:text="@string/tv_grosir_value"
+                android:padding="@dimen/margin_vs"
+                android:textColor="@color/white"
+                apps:textColor="#000000"
+                android:visibility="visible" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:paddingStart="@dimen/margin_vs"
+            android:paddingEnd="@dimen/margin_vs"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/product_name"
+            android:textStyle="bold" />
+
+
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:paddingStart="@dimen/margin_vs"
+            android:paddingEnd="@dimen/margin_vs"
+            apps:text="Rp.150.000,00" />
+
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="@dimen/margin_vs"
+            android:layout_marginTop="@dimen/margin_vs"
+            android:background="#c5c5c5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <TextView
+                android:id="@+id/tv_product_shop_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/colorAccent"
+                apps:text="kulomadyStore" />
+
+            <ImageView
+                android:id="@+id/prod_lucky"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:contentDescription="@string/iv_product_lucky_desc"
+                apps:src="@drawable/ic_shop_gold"
+                android:padding="@dimen/margin_vs" />
+
+            <ImageView
+                android:id="@+id/prod_gold"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:contentDescription="@string/iv_product_gold_desc"
+                android:src="@drawable/ic_shop_gold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

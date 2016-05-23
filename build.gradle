@@ -17,11 +17,11 @@ buildscript {
 
 allprojects {
     ext {
-        androidApplicationId = 'com.kulomady.mycleanarchitecture.presentation'
+        androidApplicationId = 'com.kulomady.tokopedia.presentation'
         androidVersionCode = 1
         androidVersionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-        testApplicationId = 'com.kulomady.mycleanarchitecture.presentation.test'
+        testApplicationId = 'com.kulomady.tokopedia.presentation.test'
     }
 }
 

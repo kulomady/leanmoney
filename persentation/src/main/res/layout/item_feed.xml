@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_feed_top" />
 
-        <com.kulomady.mycleanarchitecture.view.component.SquaredFrameLayout
+        <com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout
             android:id="@+id/vImageRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -45,7 +45,7 @@
                 android:src="@drawable/ic_heart_outline_white"
                 android:visibility="invisible" />
 
-        </com.kulomady.mycleanarchitecture.view.component.SquaredFrameLayout>
+        </com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout>
 
         <ImageView
             android:id="@+id/ivFeedBottom"

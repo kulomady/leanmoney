@@ -25,7 +25,7 @@ public abstract class UseCase {
   private Subscription subscription = Subscriptions.empty();
 
   protected UseCase(ThreadExecutor threadExecutor,
-      PostExecutionThread postExecutionThread) {
+                    PostExecutionThread postExecutionThread) {
     this.threadExecutor = threadExecutor;
     this.postExecutionThread = postExecutionThread;
   }
