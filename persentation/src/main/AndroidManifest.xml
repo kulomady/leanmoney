@@ -23,21 +23,8 @@
                 android:value="com.kulomady.tokopedia.view.activity.ProductSearchResultActivity" />
         </activity>
         <activity
-            android:name=".view.activity.ListProductActivity"
-            android:label="@string/title_activity_list_user"
-            android:parentActivityName=".view.activity.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.activity.MainActivity" />
-
-        </activity>
-        <activity
-            android:name=".view.activity.ProductDetailActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_user_detail"
-            android:parentActivityName=".view.activity.ListProductActivity" />
-        <activity
             android:name=".view.activity.ProductSearchResultActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
 
             <!-- to identify this activity as "searchable" -->
@@ -51,5 +38,4 @@
                 android:resource="@xml/searchable" />
         </activity>
     </application>
-
 </manifest>

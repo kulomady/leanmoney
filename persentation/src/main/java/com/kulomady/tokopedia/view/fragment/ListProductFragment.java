@@ -155,7 +155,7 @@ public class ListProductFragment extends  BaseFragment implements
     @Override
     public void renderMoreProductList(Collection<ProductModel> productModelCollection) {
         Log.d(TAG, "renderMoreProductList() called with: " + "productModelCollection = [" + productModelCollection + "]");
-        productsAdapter.addItemMore((List<ProductModel>) productModelCollection);
+        productsAdapter.addItemsMore((List<ProductModel>) productModelCollection);
     }
 
     @Override
@@ -230,7 +230,7 @@ public class ListProductFragment extends  BaseFragment implements
 //                    itemList.add(new ProductModel());
 //                }
 //                hideLoadingLoadmoreProduct();
-//                productsAdapter.addItemMore(itemList);
+//                productsAdapter.addItemsMore(itemList);
 //                setMoreLoading(false);
 ////                hideLoadingLoadmoreProduct();
 //            }

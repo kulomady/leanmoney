@@ -3,7 +3,6 @@ package com.kulomady.tokopedia.Navigation;
 import android.content.Context;
 import android.content.Intent;
 
-import com.kulomady.tokopedia.view.activity.ListProductActivity;
 import com.kulomady.tokopedia.view.activity.ProductDetailActivity;
 
 import javax.inject.Inject;
@@ -21,21 +20,9 @@ public class Navigator {
     @Inject
     public Navigator() {}
 
-    /**
-     * Goes to the product list screen.
-     *
-     * @param context A Context needed to open the destiny activity.
-     */
-    public void navigateToUserList(Context context) {
+    public void navigateToProductDetail(Context context, int productId) {
         if (context != null) {
-            Intent intentToLaunch = ListProductActivity.getCallingIntent(context);
-            context.startActivity(intentToLaunch);
-        }
-    }
-
-    public void navigateToUserDetail(Context context,int userId) {
-        if (context != null) {
-            Intent intent = ProductDetailActivity.getCallingIntent(context, userId);
+            Intent intent = ProductDetailActivity.getCallingIntent(context, productId);
             context.startActivity(intent);
         }
     }

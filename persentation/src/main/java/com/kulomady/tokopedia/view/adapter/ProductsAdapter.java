@@ -124,11 +124,6 @@ public class ProductsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
                 });
     }
 
-    public void addItemMore(List<ProductModel> lst){
-        this.productsCollection.addAll(lst);
-        notifyItemRangeChanged(0,productsCollection.size());
-    }
-
     @Override
     public long getItemId(int position) {
         return position;
@@ -147,6 +142,11 @@ public class ProductsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHold
     public void setLayoutManager(ProductsLayoutManager linearLayoutManager){
         this.mLayoutManager =linearLayoutManager;
 
+    }
+
+    public void addItemsMore(List<ProductModel> lst){
+        this.productsCollection.addAll(lst);
+        notifyItemRangeChanged(0,productsCollection.size());
     }
 
     public void setRecyclerView(RecyclerView mView){

@@ -126,7 +126,7 @@ public class ProductSearchResultActivity extends BaseDrawerActivity
 
     @Override
     public void onProductClicked(ProductModel productModel) {
-        this.navigator.navigateToUserDetail(this, productModel.getProduct_id());
+        this.navigator.navigateToProductDetail(this, productModel.getProduct_id());
         overridePendingTransition(0, 0);
     }
 

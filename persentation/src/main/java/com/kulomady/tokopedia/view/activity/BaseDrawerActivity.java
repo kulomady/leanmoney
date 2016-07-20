@@ -54,7 +54,7 @@ public class BaseDrawerActivity extends BaseActivity
             getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    drawerLayout.openDrawer(Gravity.LEFT);
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
             });
         }
@@ -98,12 +98,7 @@ public class BaseDrawerActivity extends BaseActivity
         switch (item.getItemId()){
             case R.id.menu_news:
                 break;
-            case R.id.menu_popular:
-                if(!(this instanceof ListProductActivity)) {
-                    this.navigator.navigateToUserList(this);
-                    overridePendingTransition(0, 0);
-                }
-                break;
+            //TODO implement menu on navigation
         }
         item.setChecked(true);
         closeDrawerPage();

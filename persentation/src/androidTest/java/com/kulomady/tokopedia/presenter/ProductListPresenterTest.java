@@ -3,11 +3,12 @@ package com.kulomady.tokopedia.presenter;
 import android.content.Context;
 import android.test.AndroidTestCase;
 
+import com.kulomady.domain.interactor.GetList;
 import com.kulomady.domain.interactor.GetListByQuery;
-import com.kulomady.domain.interactor.UseCase;
 import com.kulomady.tokopedia.mapper.ProductModelDataMapper;
 import com.kulomady.tokopedia.view.ProductListView;
 
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -26,7 +27,7 @@ public class ProductListPresenterTest extends AndroidTestCase {
     @Mock
     private ProductListView mockProductListView;
     @Mock
-    private UseCase mockGetProductList;
+    private GetList mockGetProductList;
 
     @Mock
     GetListByQuery mockGetListByQuery;
@@ -48,6 +49,7 @@ public class ProductListPresenterTest extends AndroidTestCase {
         productListPresenter.setView(mockProductListView);
     }
 
+    @Test
     public void testProductListPresenterInitialize() {
         given(mockProductListView.context()).willReturn(mockContext);
         productListPresenter.initialize();

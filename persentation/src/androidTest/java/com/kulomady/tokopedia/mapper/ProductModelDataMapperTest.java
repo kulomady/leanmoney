@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
-public class UserModelDataMapperTest extends TestCase {
+public class ProductModelDataMapperTest extends TestCase {
 
   private static final int FAKE_PRODUCT_ID = 123;
   private static final String FAKE_PRODUCT_NAME = "Tony Stark";

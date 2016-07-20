@@ -10,20 +10,21 @@ import static org.junit.Assert.assertThat;
 
 public class ProductTest {
 
-  private static final int FAKE_USER_ID = 8;
+  private static final int FAKE_PRODUCT_ID = 8;
 
   private ProductItem product;
 
   @Before
   public void setUp() {
     product = new ProductItem();
-    product.setProduct_id(FAKE_USER_ID);
+    product.setProduct_id(FAKE_PRODUCT_ID);
+
   }
 
   @Test
   public void testProductConstructorHappyCase() {
     int userId = product.getProduct_id();
 
-    assertThat(userId, is(FAKE_USER_ID));
+    assertThat(userId, is(FAKE_PRODUCT_ID));
   }
 }

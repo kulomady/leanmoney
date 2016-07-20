@@ -27,9 +27,7 @@ public class ProductDataStoreFactory {
         this.productCache = productCache;
     }
 
-    /**
-     * Create {@link ProductDataStore} from params given
-     */
+
     public ProductDataStore create(int userId) {
         ProductDataStore productDataStore;
 
@@ -42,9 +40,6 @@ public class ProductDataStoreFactory {
         return productDataStore;
     }
 
-    /**
-     * Create {@link ProductDataStore} to retrieve data from the Cloud.
-     */
     public ProductDataStore createCloudDataStore() {
         ProductEntityJsonMapper productEntityJsonMapper = new ProductEntityJsonMapper();
 

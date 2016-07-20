@@ -6,7 +6,7 @@ import com.kulomady.domain.item.ProductItem;
 import rx.Observable;
 
 /**
- * Interface that represents a Repository for getting {@link Product} related data.
+ * Interface that represents a Repository for getting {@link ProductDomain} related data.
  */
 public interface ProductRepository {
 
