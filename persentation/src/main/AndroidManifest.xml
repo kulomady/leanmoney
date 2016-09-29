@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kulomady.tokopedia">
+    package="com.hack.arm">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".AndroidApplication"
+        android:name="com.hack.arm.AndroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name="com.hack.arm.view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.default_searchable"
-                android:value="com.kulomady.tokopedia.view.activity.ProductSearchResultActivity" />
+            <!--<meta-data-->
+                <!--android:name="android.app.default_searchable"-->
+                <!--android:value="com.kulomady.tokopedia.view.activity.ProductSearchResultActivity" />-->
         </activity>
         <activity
-            android:name=".view.activity.ProductSearchResultActivity"
+            android:name="com.hack.arm.view.activity.ProductSearchResultActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
 

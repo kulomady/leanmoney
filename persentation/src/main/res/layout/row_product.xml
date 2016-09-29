@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout
+        <com.hack.arm.view.viewComponent.SquaredFrameLayout
             android:id="@+id/vImageRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal" />
 
-        </com.kulomady.tokopedia.view.viewComponent.SquaredFrameLayout>
+        </com.hack.arm.view.viewComponent.SquaredFrameLayout>
 
         <LinearLayout
             android:id="@+id/grosir_preorder_1"

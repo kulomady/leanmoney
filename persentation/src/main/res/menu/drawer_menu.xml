@@ -3,19 +3,19 @@
         <!--android:checkableBehavior="single">-->
     <group android:id="@+id/menu_group_1">
         <item
-            android:id="@+id/menu_feed"
+            android:id="@+id/menu_home"
             android:icon="@drawable/ic_global_menu_feed"
             android:title="Beranda" />
         <item
-            android:id="@+id/menu_direct"
+            android:id="@+id/menu_signin"
             android:icon="@drawable/ic_global_menu_direct"
             android:title="Masuk" />
         <item
-            android:id="@+id/menu_news"
+            android:id="@+id/menu_daftar"
             android:icon="@drawable/ic_global_menu_news"
             android:title="Daftar" />
         <item
-            android:id="@+id/menu_popular"
+            android:id="@+id/menu_developer_option"
             android:icon="@drawable/ic_global_menu_popular"
             android:title="Developer Options" />
 

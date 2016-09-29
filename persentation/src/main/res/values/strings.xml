@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTokopedia</string>
+    <string name="app_name">Lean Money</string>
     <string name="title_activity_list_user">ListUserActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_detail">UserDetailActivity</string>
